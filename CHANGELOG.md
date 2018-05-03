@@ -1,3 +1,9 @@
+## [v2.0.0]
+> 2018-05-02
+
+* Replace .live() with .on()
+ * Compatible with jQuery v2
+
 ## [v1.0.0]
 > 2018-04-29
 
