@@ -308,8 +308,8 @@
       // Bind the reveal 'open' event.
       // When the event is triggered, openAnimation is called
       // along with any function set in the options.open property.
-      modal.bind('reveal:open.reveal', openAnimation);
-      modal.bind('reveal:open.reveal', openVideos);
+      modal.on('reveal:open.reveal', openAnimation);
+      modal.on('reveal:open.reveal', openVideos);
 
       /*
        * Closes the modal element(s)
@@ -426,13 +426,13 @@
        */
       function destroy() {
         // Unbind all .reveal events from the modal.
-        modal.unbind('.reveal');
+        modal.off('.reveal');
         // Unbind all .reveal events from the modal background.
-        modalBg.unbind('.reveal');
+        modalBg.off('.reveal');
         // Unbind all .reveal events from the modal 'close' button.
-        $closeButton.unbind('.reveal');
+        $closeButton.off('.reveal');
         // Unbind all .reveal events from the body.
-        $('body').unbind('.reveal');
+        $('body').off('.reveal');
       }
 
       function closeVideos() {
@@ -447,25 +447,25 @@
 
       // Bind the modal 'close' event.
       // Handled by the options.close property function.
-      modal.bind('reveal:close.reveal', options.close);
+      modal.on('reveal:close.reveal', options.close);
       // Bind the modal 'close' event
-      modal.bind('reveal:close.reveal', closeAnimation);
-      modal.bind('reveal:closed.reveal', closeVideos);
+      modal.on('reveal:close.reveal', closeAnimation);
+      modal.on('reveal:closed.reveal', closeVideos);
       // Bind the modal 'opened' + 'closed' event
       // Calls the unlockModal method.
-      modal.bind('reveal:opened.reveal reveal:closed.reveal', unlockModal);
+      modal.on('reveal:opened.reveal reveal:closed.reveal', unlockModal);
       // Bind the modal 'closed' event.
       // Calls the destroy method.
-      modal.bind('reveal:closed.reveal', destroy);
+      modal.on('reveal:closed.reveal', destroy);
       // Bind the modal 'open' event
       // Handled by the options.open property function.
-      modal.bind('reveal:open.reveal', options.open);
+      modal.on('reveal:open.reveal', options.open);
       // Bind the modal 'opened' event.
       // Handled by the options.opened property function.
-      modal.bind('reveal:opened.reveal', options.opened);
+      modal.on('reveal:opened.reveal', options.opened);
       // Bind the modal 'closed' event.
       // Handled by the options.closed property function.
-      modal.bind('reveal:closed.reveal', options.closed);
+      modal.on('reveal:closed.reveal', options.closed);
 
       // We're running this for the first time.
       // Trigger the modal 'open' event.
@@ -474,7 +474,7 @@
       // Get the closeButton variable element(s).
       $closeButton = $('.' + options.dismissModalClass)
       // Bind the element 'click' event and handler.
-      .bind('click.reveal', function () {
+      .on('click.reveal', function () {
         // Trigger the modal 'close' event.
         modal.trigger('reveal:close');
       });
@@ -486,7 +486,7 @@
         // Adds a pointer symbol when you mouse over the modal background.
         modalBg.css({ cursor: 'pointer' });
         // Bind a 'click' event handler to the modal background.
-        modalBg.bind('click.reveal', function () {
+        modalBg.on('click.reveal', function () {
           // Trigger the modal 'close' event.
           modal.trigger('reveal:close');
         });
@@ -494,7 +494,7 @@
 
       // Bind keyup functions on the body element.
       // We'll want to close the modal when the 'escape' key is hit.
-      $('body').bind('keyup.reveal', function (event) {
+      $('body').on('keyup.reveal', function (event) {
         // Did the escape key get triggered?
         if (event.which === 27 && options.closeOnEsc) {
           // 27 is the keycode for the Escape key
