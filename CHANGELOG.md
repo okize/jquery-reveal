@@ -1,3 +1,10 @@
+## [v3.0.0]
+> 2018-05-06
+
+* Replace .bind() with .on()
+* Replace .unbind() with .off()
+ * Compatible with jQuery v3
+
 ## [v2.0.0]
 > 2018-05-02
 
